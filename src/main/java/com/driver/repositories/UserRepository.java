@@ -13,15 +13,15 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-    @Modifying
-    @Transactional
-    @Query("update user u set u.username= :#{#user.username},"
-            + "u.password = :#{#user.password},"
-            + "u.firstName = :#{#user.firstName},"
-            + "u.lastName = :#{#user.lastName}"
-            + "where u.id = :#{#user.id}")
-    void updateUserDetail(User user);
-
-
-    User findByUsername(String username);
+//    @Modifying
+//    @Transactional
+//    @Query("update user u set u.username= :#{#user.username},"
+//            + "u.password = :#{#user.password},"
+//            + "u.firstName = :#{#user.firstName},"
+//            + "u.lastName = :#{#user.lastName}"
+//            + "where u.id = :#{#user.id}")
+//    void updateUserDetail(User user);
+//
+//
+//    User findByUsername(String username);
 }
