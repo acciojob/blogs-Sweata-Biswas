@@ -6,7 +6,6 @@ import com.driver.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +18,7 @@ public class ImageService {
         //create an image based on given parameters and add it to the imageList of given blog
         Image image = new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
         image.setBlog(blog);
         List<Image> imgList = blog.getImageList();
         imgList.add(image);
@@ -42,7 +41,7 @@ public class ImageService {
         //In case the image is null, return 0
          if(image!= null){
 
-             String givenDimension = image.getDimension();
+             String givenDimension = image.getDimensions();
              if(givenDimension !=null) {
                  int screenSize = Integer.parseInt(screenDimensions.split("X")[0]) * Integer.parseInt(screenDimensions.split("X")[1]);
                  int givenSize = Integer.parseInt(givenDimension.split("X")[0]) * Integer.parseInt(givenDimension.split("X")[1]);

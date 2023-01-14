@@ -4,13 +4,10 @@ import com.driver.models.Blog;
 import com.driver.models.Image;
 import com.driver.models.User;
 import com.driver.repositories.BlogRepository;
-import com.driver.repositories.ImageRepository;
 import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class BlogService {
     public void addImage(Integer blogId, String description, String dimensions){
         Image image = new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
 
         //add an image to the blog after creating it
         Blog blog = findBlogById(blogId);
