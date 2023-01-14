@@ -23,5 +23,5 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 //    void updateUserDetail(User user);
 //
 //
-//    User findByUsername(String username);
+    User findByUsername(String username);
 }

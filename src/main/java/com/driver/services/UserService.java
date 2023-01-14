@@ -31,11 +31,12 @@ public class UserService {
     }
 
     public User findUserByUsername(String username){
-        for (User user:userRepository3.findAll()   ) {
-            if(user.getUsername().equals(username)){
-                return user;
-            }
-        }
-        return null;
-}
+//        for (User user:userRepository3.findAll()   ) {
+//            if(user.getUsername().equals(username)){
+//                return user;
+//            }
+//        }
+//        return null;
+        return userRepository3.findByUsername(username);
+    }
 }
