@@ -42,12 +42,10 @@ public class ImageService {
          if(image!= null){
 
              String givenDimension = image.getDimensions();
-             if(givenDimension !=null) {
+
                  int screenSize = Integer.parseInt(screenDimensions.split("X")[0]) * Integer.parseInt(screenDimensions.split("X")[1]);
                  int givenSize = Integer.parseInt(givenDimension.split("X")[0]) * Integer.parseInt(givenDimension.split("X")[1]);
                  return screenSize / givenSize;
-             }
-             return 0;
          }
          return 0;
     }
