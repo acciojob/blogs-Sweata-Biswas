@@ -17,15 +17,15 @@ public class ImageController {
     public ResponseEntity<Image> createAndReturn(@RequestBody Blog blog,
                                                  @RequestParam String description,
                                                  @RequestParam String dimensions) {
-        Image image = imageService.createAndReturn(blog,description,dimensions);
-        return new ResponseEntity<>(image, HttpStatus.CREATED);
+//        Image image = imageService.createAndReturn(blog,description,dimensions);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
     @GetMapping("/countImagesInScreen/{id}/{screenDimensions}")
     public ResponseEntity<Integer> countImagesInScreen(@PathVariable int id, @PathVariable String screenDimensions){
-        Image image = imageService.findById(id);
-        int count = imageService.countImagesInScreen(image,screenDimensions) ;
-        return new ResponseEntity<>(count, HttpStatus.OK);
+//        Image image = imageService.findById(id);
+//        int count = imageService.countImagesInScreen(image,screenDimensions) ;
+        return new ResponseEntity<>(0, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
