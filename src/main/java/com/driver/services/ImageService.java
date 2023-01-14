@@ -17,17 +17,15 @@ public class ImageService {
     BlogRepository blogRepository;
     public Image createAndReturn(Blog blog, String description, String dimensions){
         //create an image based on given parameters and add it to the imageList of given blog
-        Image image = new Image();
-        image.setDescription(description);
-        image.setDimensions(dimensions);
-        image.setBlog(blog);
+        Image image = new Image(description,dimensions, blog);
+
         List<Image> imgList = blog.getImageList();
         if(imgList == null){
             imgList = new ArrayList<>();
         }
         imgList.add(image);
         blog.setImageList(imgList);
-
+        imageRepository2.save(image);
         blogRepository.save(blog);
         return  image;
     }
@@ -47,9 +45,9 @@ public class ImageService {
 
              String givenDimension = image.getDimensions();
 
-                 int screenSize = Integer.parseInt(screenDimensions.split("X")[0]) * Integer.parseInt(screenDimensions.split("X")[1]);
-                 int givenSize = Integer.parseInt(givenDimension.split("X")[0]) * Integer.parseInt(givenDimension.split("X")[1]);
-                 return screenSize / givenSize;
+                 int length1 = Integer.parseInt(screenDimensions.split("X")[0]) / Integer.parseInt(givenDimension.split("X")[0]);
+                 int length2 = Integer.parseInt(screenDimensions.split("X")[1]) / Integer.parseInt(givenDimension.split("X")[1]);
+                 return length1 * length2;
          }
          return 0;
     }
