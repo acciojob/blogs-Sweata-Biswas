@@ -7,7 +7,7 @@ import com.driver.repositories.BlogRepository;
 import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,18 +54,24 @@ public class BlogService {
     }
 
     public void addImage(Integer blogId, String description, String dimensions){
-        Image image = new Image();
-        image.setDescription(description);
-        image.setDimensions(dimensions);
+     
+Blog blog=blogRepository1.findById(blogId).get();
 
-        //add an image to the blog after creating it
-        Blog blog = findBlogById(blogId);
+        Image image=imageService1.createAndReturn(blog,description,dimensions);
+
         image.setBlog(blog);
-        List<Image> imgList = blog.getImageList();
-        imgList.add(image);
-        blog.setImageList(imgList);
+
+        List<Image> imageList=blog.getImageList();
+
+        if(imageList==null) imageList=new ArrayList<>();
+
+        imageList.add(image);
+
+        blog.setImageList(imageList);
 
         blogRepository1.save(blog);
+        //add an image to the blog after creating it
+        
     }
 
     public void deleteBlog(int blogId){
